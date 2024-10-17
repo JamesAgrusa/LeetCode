@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool isPalindrome(int x) 
+    {
+        if (x==0) return true;
+        if(x < 0 || x%10 == 0) return false;
+
+        int reversed_num = 0;
+        while(x > reversed_num) //will check if reverse number is greater than or equal to x then will stop when x is larger
+        {
+            int pop = x % 10; // pop last digit of last number and change original number
+            x /= 10;
+            reversed_num = reversed_num * 10 + pop;
+        }
+      if ( x== reversed_num || x == (reversed_num / 10)) return true; // removed last digit of reversed number and compared it to the first half of the original numer
+      return false;
+    }
+};
+
+// 212 // 212 ( flipped )
+// 10 // 01 ( not palindrome )
